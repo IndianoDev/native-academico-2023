@@ -1,36 +1,45 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
 import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 
-const AlunosForm = () => {
+const AlunosForm = ({navigation, route}) => {
 
-    const [dados, setDados] = useState({})
-
-    async function handleChange(valor, campo) {
-
-        let endereco = {}
-        if (campo == 'cep' && valor.length == 8) {
-            endereco = await getEndereco(valor)
-            console.log(endereco);
-            setDados({ ...dados, ...endereco, [campo]: valor })
-        } else {
-            setDados({ ...dados, [campo]: valor })
-        }
+    const aluno = route.params?.aluno || {}
+    const id = route.params?.id  
+  
+    const [dados, setDados] = useState(aluno)
+  
+    function handleChange(valor, campo) {
+      setDados({...dados, [campo]: valor })
     }
-
-    async function getEndereco(cep) {
-        const endereco = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
-        return endereco.data
-    }
-
+  
     function salvar() {
-        console.log(dados)
+  
+      AsyncStorage.getItem('alunos').then(resultado => {
+        
+        const alunos = JSON.parse(resultado) || []
+        
+        if(id >= 0){
+          alunos.splice(id, 1, dados)
+        }else{  
+          alunos.push(dados)
+        }
+  
+   
+        console.log(alunos)
+    
+        AsyncStorage.setItem('alunos', JSON.stringify(alunos))
+    
+        navigation.goBack()
+      })
+  
     }
 
     return (
         <ScrollView style={{ margin: 15 }}>
-            <Text>Formulário de Curso</Text>
+            <Text>Formulário de alunos</Text>
 
             <TextInput
                 style={{ marginTop: 10 }}

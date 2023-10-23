@@ -9,8 +9,8 @@ const DisciplinasStack = () => {
   return (
     <>
      <Stack.Navigator>
-                <Stack.Screen name="Disciplinas" component={Disciplinas} options={{ title: 'Disciplinas' }} />
-                <Stack.Screen name="Disciplinas - Form" component={DisciplinasForm} options={{ title: 'Disciplinas - Form' }} />
+                <Stack.Screen name="disciplinas" component={Disciplinas} options={{ title: 'Disciplinas' }} />
+                <Stack.Screen name="disciplinas-Form" component={DisciplinasForm} options={{ title: 'Disciplinas - Form' }} />
     </Stack.Navigator>
     </>
   )
