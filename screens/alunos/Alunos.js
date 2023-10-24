@@ -1,8 +1,8 @@
-import { useFocusEffect } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useFocusEffect } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { ScrollView } from 'react-native';
-
-import { Button, Text, Card, FAB } from 'react-native-paper'
+import { ScrollView,  } from 'react-native'
+import { Button, Card, Dialog, FAB, IconButton,  Portal, Text } from 'react-native-paper'
 
 const Alunos = ({navigation}) => {
 
@@ -48,10 +48,10 @@ function confirmarExclusao(id){
 
   return (
     <>
-    <ScrollView style={{padding: 15, border}}>
+    <ScrollView style={{padding: 15}}>
 
       
-    {cursos.map((item, i) => (
+    {alunos.map((item, i) => (
           <Card key={i} mode='outlined' style={{ marginBottom: 10 }}>
             <Card.Content>
               <Text variant="titleLarge">nome: {item.nome}</Text>
@@ -96,21 +96,18 @@ function confirmarExclusao(id){
 
     
  
- <FAB
-    icon="plus"
-    size='small'
-    mode='blue'
-    style={ {
-      position: 'absolute',
-      right: 10,
-      bottom: 10,
-    }}
-    onPress={() => navigation.push('cursos-form')}
-  />
+ 
 
 
       </ScrollView>
 
+      <FAB
+      icon="plus"
+      size='small'
+      color='blue'
+      style={{ position: 'absolute', right: 10, bottom: 10 }}
+    onPress={() => navigation.push('alunos-form')}
+  />
     </>
   )
 }

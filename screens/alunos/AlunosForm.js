@@ -38,7 +38,9 @@ const AlunosForm = ({navigation, route}) => {
     }
 
     return (
+        
         <ScrollView style={{ margin: 15 }}>
+
             <Text>Formulário de alunos</Text>
 
             <TextInput
