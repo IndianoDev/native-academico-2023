@@ -10,8 +10,8 @@ const ProfessoresStack = () => {
   return (
     <>
      <Stack.Navigator>
-                <Stack.Screen name="Professores" component={Professores} options={{ title: 'Professores' }} />
-                <Stack.Screen name="Professores - Form" component={ProfessoresForm} options={{ title: 'Professores - Form' }} />
+                <Stack.Screen name="professores" component={Professores} options={{ title: 'Professores' }} />
+                <Stack.Screen name="professores-form" component={ProfessoresForm} options={{ title: 'Professores - Form' }} />
     </Stack.Navigator>
     </>
   )

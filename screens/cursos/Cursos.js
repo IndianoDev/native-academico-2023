@@ -54,7 +54,7 @@ function confirmarExclusao(id){
           <Card key={i} mode='outlined' style={{ marginBottom: 10 }}>
             <Card.Content>
               <Text variant="titleLarge">{item.nome}</Text>
-              <Text variant="bodyMedium">Duração: {item.duracao}</Text>
+              <Text variant="bodyMedium">Duração: {item.duracao}sem.</Text>
               <Text variant="bodyMedium">Modalidade: {item.modalidade}</Text>
             </Card.Content>
             <Card.Actions>
