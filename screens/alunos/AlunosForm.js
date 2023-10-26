@@ -1,7 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import axios from 'axios'
+import { Formik } from 'formik'
 import React, { useState } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 
 const AlunosForm = ({navigation, route}) => {
@@ -43,6 +44,15 @@ const AlunosForm = ({navigation, route}) => {
 
             <Text>Formulário de alunos</Text>
 
+            <Formik
+     initialValues={curso}
+     validationSchema={cursoValidator}
+     onSubmit={values => salvar(values)}>
+
+
+  {({values, handleChange, handleSubmit, errors, touched, setFieldValue}) => (
+        <View>
+
             <TextInput
                 style={{ marginTop: 10 }}
                 mode='outlined'
@@ -57,7 +67,8 @@ const AlunosForm = ({navigation, route}) => {
                 label='CPF'
                 keyboardType='decimal-pad'
                 value={dados.cpf}
-                onChangeText={(valor) => handleChange(valor, 'cpf')}
+                onChangeText={(value) => setFieldValue()}
+
             />
 
             <TextInput
@@ -128,6 +139,15 @@ const AlunosForm = ({navigation, route}) => {
             />
 
             <Button onPress={salvar}>Salvar</Button>
+
+            
+
+            </View>
+            
+            )}
+
+       
+            </Formik>
 
         </ScrollView>
     )

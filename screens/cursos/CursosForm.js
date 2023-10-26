@@ -4,12 +4,27 @@ import React, { useState } from 'react'
 import { View } from 'react-native'
 import { ScrollView } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
+import {mask} from 'remask'
 import * as Yup from 'yup';
 
 const CursosForm = ({navigation, route}) => {
 
-  const curso = route.params?.curso || {}
+  
+
+  let curso ={
+    nome: '',
+    duracao: '',
+    modalidade: ''
+  }
+
   const id = route.params?.id  
+
+  if(id >= 0){
+    
+   curso = route.params?.curso
+  }
+
+  
 
   // const [dados, setDados] = useState(curso)
 
@@ -65,8 +80,17 @@ const CursosForm = ({navigation, route}) => {
      onSubmit={values => salvar(values)}
 
    >
-    {({values, handleChange, handleSubmit, errors, touched}) => (
+    {({values, handleChange, handleSubmit, errors, touched, setFieldValue}) => (
       <View>
+
+    <TextInput
+        style={{ marginTop: 10 }}
+        mode='outlined'
+        label='CPF'
+        value={values.cpf}
+        onChangeText={(value)=>{setFieldValue('cpf', mask(value, '999.999.999-99'))}}
+         />
+
     <TextInput
         style={{ marginTop: 10 }}
         mode='outlined'
