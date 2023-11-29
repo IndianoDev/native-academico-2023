@@ -1,68 +1,86 @@
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import ClientesStack from './screens/cliente/ClientesStack';
+import BlusasStack from './screens/blusas/BlusasStack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import CursoStack from './screens/cursos/CursoStack';
-import AlunosStack from './screens/alunos/AlunosStack';
-import DisciplinasStack from './screens/disciplinas/DisciplinaStack';
-import ProfessoresStack from './screens/professores/ProfessoresStack';
+import ShortsStack from './screens/shorts/ShortsStack';
+import TenisStack from './screens/tenis/TenisStack';
+import FornecedoresStack from './screens/fornecedores/FornecedoresStack';
+
+
+
 
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
   return (
     <>
-      <PaperProvider>
-        <NavigationContainer>
-          <Tab.Navigator>
-            <Tab.Screen
-              name="Cursos" 
-              component={CursoStack}
-              options={{
-                tabBarIcon: () => (
-                  <MaterialCommunityIcons name="bookshelf" size={26} />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Disciplinas" 
-              component={DisciplinasStack}
-              options={{
-                tabBarIcon: () => (
-                  <MaterialCommunityIcons name="book-open-variant" size={26} />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Alunos" 
-              component={AlunosStack}
-              options={{
-                tabBarIcon: () => (
-                  <MaterialCommunityIcons name="human-handsup" size={26} />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Professores" 
-              component={ProfessoresStack}
-              options={{
-                tabBarIcon: () => (
-                  <MaterialCommunityIcons name="account-tie" size={26} />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Turmas" 
-              component={CursoStack}
-              options={{
-                tabBarIcon: () => (
-                  <MaterialCommunityIcons name="google-classroom" size={26} />
-                ),
-              }}
-            />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </PaperProvider>
+    
+    <PaperProvider>       
+      <NavigationContainer>
+      <Tab.Navigator barStyle={{backgroundColor: "#C4A403"}}>
+     
+      <Tab.Screen 
+       name='Clientes'
+       component={ClientesStack}
+       options={{
+        tabBarLabel: 'Clientes',       
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="account" color={color} size={26} />
+        ),
+      }}
+        />
+      <Tab.Screen
+       name='Fornecedor' 
+       component={FornecedoresStack} 
+       options={{
+        tabBarLabel: 'Fornecedor',    
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="mailbox-up" color={color} size={26} />
+        ),
+      }}
+       />
+       <Tab.Screen
+       name='Blusas' 
+       component={BlusasStack} 
+       options={{
+        tabBarLabel: 'Blusas',   
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="tshirt-crew" color={color} size={26} />
+        ),
+      }}
+       />
+        <Tab.Screen 
+      name='Shorts' 
+      component={ShortsStack}
+      options={{
+        tabBarLabel: 'Shorts',
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="hanger" color={color} size={26} />
+        ),
+      }}
+       />
+
+       <Tab.Screen
+       name='Tenis' 
+       component={TenisStack} 
+       options={{
+        tabBarLabel: 'Tenis', 
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="foot-print" color={color} size={26} />
+        ),
+      }}
+       />
+      
+        
+    </Tab.Navigator>
+
+      </NavigationContainer>
+   </PaperProvider>
     </>
+    
   );
 }
