@@ -93,7 +93,8 @@ const FornecedoresForm = ({navigation, route}) => {
     />
     {(errors.telefone && touched.telefone) && <Text style={{color: 'red'}}> {errors.telefone} </Text>}
     <Divider/>
-    <Button  mode="contained" buttonColor='#C4A403' onPress={handleSubmit}> Enviar </Button>
+    <Button  mode="contained" buttonColor='#C4A403' onPress={handleSubmit}  style={{
+    marginTop: 10}}> Enviar </Button>
       </View>
     )}
        </Formik>

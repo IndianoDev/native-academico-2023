@@ -52,16 +52,8 @@ const ClientesForm = ({navigation, route}) => {
     />
     {(errors.nome && touched.nome) && <Text style={{color: 'red'}}> {errors.nome} </Text>}
     <Divider/>
-    <TextInput style={{
-      marginTop: 5
-    }} 
-    label="Idade" 
-    mode='outlined' 
-    value={values.idade}
-    onChangeText={handleChange("idade")}
-    />
-    {(errors.idade && touched.idade) && <Text style={{color: 'red'}}> {errors.idade} </Text>}
-    <Divider/>
+  
+  
     <TextInput style={{
       marginTop: 5
     }} 
@@ -92,7 +84,8 @@ const ClientesForm = ({navigation, route}) => {
     />
     {(errors.telefone && touched.telefone) && <Text style={{color: 'red'}}> {errors.telefone} </Text>}
     <Divider/>
-    <Button  mode="contained" buttonColor='#C4A403' onPress={handleSubmit}> Enviar </Button>
+    <Button  mode="contained" buttonColor='#C4A403' onPress={handleSubmit}  style={{
+    marginTop: 10}}> Enviar </Button>
       </View>
     )}
        </Formik>

@@ -60,7 +60,7 @@ const TenisList = ({navigation}) => {
             <IconButton
             containerColor='#80A1C1'
             iconColor='white'
-            icon="grease-pencil"
+            icon="account-edit"
             onPress={() => navigation.push('form-tenis', {id : i, obj : item})}></IconButton>
           </Card.Actions>
           </Card>
