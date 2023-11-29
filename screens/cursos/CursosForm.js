@@ -24,14 +24,6 @@ const CursosForm = ({navigation, route}) => {
    curso = route.params?.curso
   }
 
-  
-
-  // const [dados, setDados] = useState(curso)
-
- // function handleChange(valor, campo) {
- //   setDados({...dados, [campo]: valor })
-  //}
-
   function salvar(dados) {
 
     AsyncStorage.getItem('cursos').then(resultado => {
@@ -44,42 +36,21 @@ const CursosForm = ({navigation, route}) => {
         cursos.push(dados)
       }
 
- 
-      console.log(cursos)
-  
       AsyncStorage.setItem('cursos', JSON.stringify(cursos))
   
       navigation.goBack()
     })
-
   }
-  const cursoValidator = Yup.object().shape({
-    nome: Yup.string()
-    .min(2, 'Valor muito baixo!')
-    .max(10,'Valor muito alto!')
-    .required('campo obrigatorio'),
 
-    duracao: Yup.number()
-    .min(2, 'Valor muito baixo!')
-    .max(10,'Valor muito alto!')
-    .required('campo obrigatorio'), 
-
-    modalidade: Yup.string()
-    .min(2, 'Valor muito baixo!')
-    .max(10,'Valor muito alto!')
-    .required('campo obrigatorio'),
-
-  })
   return (
     <ScrollView style={{ margin: 15 }}>
       <Text>Formulário de Curso</Text>
 
       <Formik
-     initialValues={curso}
-     validationSchema={cursoValidator}
-     onSubmit={values => salvar(values)}
-
-   >
+        initialValues={curso}
+        validationSchema={cursoValidator}
+        onSubmit={values => salvar(values)}
+      >
     {({values, handleChange, handleSubmit, errors, touched, setFieldValue}) => (
       <View>
 
@@ -141,7 +112,6 @@ const CursosForm = ({navigation, route}) => {
    </Formik>
 
 
-     
 
     </ScrollView>
   )

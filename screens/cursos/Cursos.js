@@ -26,7 +26,6 @@ const Cursos = ({ navigation  }) => {
   function carregarDados() {
     AsyncStorage.getItem('cursos').then(resultado => {
       resultado = JSON.parse(resultado) || []
-      console.log(resultado)
       setCursos(resultado)
     })
   }
@@ -38,7 +37,6 @@ function confirmarExclusao(id){
 }
 
   function excluir() {
-
     cursos.splice(idExcluir, 1)
     AsyncStorage.setItem('cursos', JSON.stringify(cursos))
       carregarDados()
@@ -58,8 +56,8 @@ function confirmarExclusao(id){
               <Text variant="bodyMedium">Modalidade: {item.modalidade}</Text>
             </Card.Content>
             <Card.Actions>
-              <IconButton icon='pencil-outline'
-                iconColor='blue' 
+              <IconButton 
+              icon='pencil-outline'
                 onPress={() => navigation.push('cursos-form', {id: i, cursos: item})}
                 ></IconButton>
 

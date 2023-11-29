@@ -17,7 +17,6 @@ const Alunos = ({navigation}) => {
     const hideDialog = () => setVisible(false);
 
       useFocusEffect(
-
     React.useCallback(() => {
       carregarDados()
     }, [])
@@ -44,7 +43,6 @@ function confirmarExclusao(id){
       carregarDados()
       setVisible(false)
   }
-
 
   return (
     <>
